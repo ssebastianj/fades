@@ -183,6 +183,9 @@ class UsageManager:
             self._write_venv_usage(f, venv_data)
 
     def _create_initial_usage_file_if_not_exists(self):
+        base_dir = os.path.dirname(self.stat_file_path)
+        os.makedirs(base_dir, exist_ok=True)
+
         if not os.path.exists(self.stat_file_path):
             existing_venvs = self.venvscache.get_venvs_metadata()
             with open(self.stat_file_path, 'wt') as f:

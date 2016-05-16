@@ -83,7 +83,7 @@ def get_basedir():
     except ImportError:
         logger.debug("Package xdg not installed; using ~/.fades folder")
         from os.path import expanduser
-        return expanduser("~/.fades")
+        return os.path.join(expanduser("~"), '.fades')
 
 
 def get_confdir():
@@ -94,7 +94,7 @@ def get_confdir():
     except ImportError:
         logger.debug("Package xdg not installed; using ~/.fades folder")
         from os.path import expanduser
-        return expanduser("~/.fades")
+        return os.path.join(expanduser("~"), '.fades')
 
 
 def _get_interpreter_info(interpreter=None):
